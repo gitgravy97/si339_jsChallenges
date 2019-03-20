@@ -11,7 +11,7 @@
     }
     #image{
         line-height:325px;
-        width: 388px;
+        width: 600px;
         height: 325px;
         border:5px solid black;
         margin:0 auto;
@@ -22,6 +22,10 @@
         background-size: 100%;
         margin-bottom:25px;
         font-size:150%;
+
+        /* addition for background image sizing */
+        background-size: cover;
+        background-position: center;
     }
     .preview{
         width:10%;
@@ -45,10 +49,24 @@
     function yeet_on(preview){
         console.log("yate on");
         document.querySelector("#image").innerHTML = preview.alt;
+        console.log(document.querySelector("#image").style.backgroundImage);
+        
+        // test attempt, verifies ability to throw an image in there
+        document.querySelector("#image").style.backgroundImage = "url(http://biostall.com/wp-content/themes/biostall/images/logo.png)";
+        
+        console.log("url of selected image:")
+        console.log(preview.style.backgroundImage);
+        // actual attempt
+        //document.querySelector("#image").style.backgroundImage
+        console.log(preview);
+        console.log(preview.src);
+
+        document.querySelector("#image").style.backgroundImage = "url("+preview.src+")";
     }
     function yeet_off(){
         console.log("yote off")
-        document.querySelector("#image").innerHTML = "Hover or tab over/into an image below."
+        document.querySelector("#image").innerHTML = "Hover or tab over/into an image below.";
+        document.querySelector("#image").style.backgroundImage = "";
     }
     </script>
 </head>
